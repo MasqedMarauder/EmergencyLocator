@@ -2,6 +2,7 @@ package com.mhacks8.varun.emergencylocator;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.telephony.SmsManager;
 
@@ -14,6 +15,7 @@ public class SendHelpService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        final SharedPreferences sharedPref = getSharedPreferences("userInfo", MODE_PRIVATE);
         final SmsManager smsManager = SmsManager.getDefault();
         Runnable r = new Runnable() {
             @Override
@@ -21,7 +23,12 @@ public class SendHelpService extends Service {
                 try {
                     Thread.sleep(10000);
                     if (LocationService.getLat() != -1 && LocationService.getLng() != -1) {
-                        smsManager.sendTextMessage("+18138429368", null, "Help Me @ (" + LocationService.getLat() + ", " + LocationService.getLng() + ")", null, null);
+                        if (sharedPref.getBoolean("policeChecked", false)) {
+                            smsManager.sendTextMessage("+18138429368", null, "Help Me @ (" + LocationService.getLat() + ", " + LocationService.getLng() + ")", null, null);
+                        }
+                        if (sharedPref.getBoolean("personalChecked", false)) {
+                            smsManager.sendTextMessage(sharedPref.getString("personalNumber", "+12095539079"), null, "Help Me @ (" + LocationService.getLat() + ", " + LocationService.getLng() + ")", null, null);
+                        }
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

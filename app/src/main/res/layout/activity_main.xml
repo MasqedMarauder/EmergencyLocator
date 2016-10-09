@@ -21,4 +21,35 @@
         android:id="@+id/toggleButton"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
+    <CheckBox
+        android:text=" 911"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="20sp"
+        android:id="@+id/policeCheckBox"
+        android:layout_alignParentTop="true" />
+
+    <CheckBox
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/policeCheckBox"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:id="@+id/personalCheckBox"/>
+
+    <EditText
+        android:text="Personal Phone #"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/personalCheckBox"
+        android:layout_alignBottom="@id/personalCheckBox"
+        android:layout_toEndOf="@id/personalCheckBox"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/personalPhoneEditText" />
+
 </RelativeLayout>
