@@ -42,7 +42,7 @@
         android:id="@+id/personalCheckBox"/>
 
     <EditText
-        android:text="Personal Phone #"
+        android:hint="Personal Phone #"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/personalCheckBox"
